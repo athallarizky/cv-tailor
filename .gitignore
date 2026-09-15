@@ -1,0 +1,38 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor Files
+.vscode/
+.idea/
+
+# Agent-Generated Directories Hygiene
+.commandcode/
+.claude/
+.cursor/
+.codex/
+.copilot/
+.windsurf/
+.augment/
+.continue/
+.aider/
+.gemini/
+.opencode/
+
+# Build & LaTeX Artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+output/
+
+# Dependencies & Environment
+node_modules/
+.env
+.env.local
+*.log
+
+# Ignore personal resource contents, keep only *.template.md files
+resources/*/*
+!resources/*/*.template.md
