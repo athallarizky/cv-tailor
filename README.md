@@ -41,7 +41,30 @@ Then, from this directory in Claude Code:
 "Rewrite these bullets impact-first: <bullets>"  → standalone rewrite mode
 ```
 
-Output lands in `output/YYYY-MM-DD_HH-mm-ss/` as both `<company>_resume.md` and `<company>_resume.tex` (plus PDF if `pdflatex` is installed).
+Output lands in `output/<company-slug>_<YYYY-MM-DD_HH-mm>/` (no seconds) as:
+
+```
+output/growmodo_2026-09-23_14-56/
+├── cv_athalla-rizky_2026-09-23.md
+├── cv_athalla-rizky_2026-09-23.tex
+└── cv_athalla-rizky_2026-09-23.pdf   ← compiled automatically
+```
+
+### PDF Compilation (one-time setup)
+
+No LaTeX toolchain? Run the bundled installer once — it sets up [Tectonic](https://tectonic-typesetting.github.io) (single static binary, ~30MB, no sudo, macOS/Linux/Windows):
+
+```bash
+./scripts/setup.sh
+```
+
+Compile any output directly:
+
+```bash
+./scripts/compile.sh output/growmodo_2026-09-23_14-56/cv_athalla-rizky_2026-09-23.tex
+```
+
+`compile.sh` auto-resolves the engine (`tectonic` → `pdflatex` → `xelatex` → `latexmk`), verifies the page count, and cleans up aux files. Templates are dual-engine: they compile identically under pdfTeX and XeTeX.
 
 ## Directory Structure
 
@@ -90,4 +113,8 @@ Page overflow is treated as failure: the skill drops least-relevant bullets firs
 ## Requirements
 
 - An AI agent that reads `SKILL.md` (developed for Claude Code)
-- `pdflatex` (TeX Live / MacTeX) — optional, for PDF output
+- A LaTeX engine for PDF output — run `./scripts/setup.sh` once (Tectonic, no sudo), or use any existing `pdflatex` / `xelatex` / `latexmk`
+
+## License
+
+[MIT](LICENSE) — © 2026 Athalla Rizky Arsyan

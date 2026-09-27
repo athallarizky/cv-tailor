@@ -11,7 +11,7 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\ifdefined\pdfglyphtounicode \input{glyphtounicode} \fi
 
 % Font options
 \usepackage[sfdefault]{roboto}  % Sans-serif font
@@ -37,7 +37,7 @@
 \titleformat{\section}{\Large\bfseries\scshape\raggedright}{}{0em}{}[\titlerule]
 
 % Ensure PDF is machine readable
-\pdfgentounicode=1
+\ifdefined\pdfgentounicode \pdfgentounicode=1 \fi
 
 % Custom commands
 \newcommand{\resumeItem}[1]{\item\small{#1}}

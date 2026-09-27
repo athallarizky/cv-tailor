@@ -25,7 +25,7 @@ Within the resolved workspace, resources and templates are organized as follows:
 │   ├── educations/     # Education history: degrees, institutions, graduation dates, honors
 │   └── experiences/    # Work experience & brag files: achievements, metrics, scope, framing notes
 ├── templates/          # LaTeX CV templates (e.g. ats-friendly-technical-resume, etc.)
-└── output/             # Generated CV outputs by timestamp: output/YYYY-MM-DD_HH-mm-ss/
+└── output/             # Generated CV outputs: output/<company-slug>_<YYYY-MM-DD_HH-mm>/
 ```
 
 ---
@@ -137,15 +137,17 @@ Apply the impact-first pattern to every bullet:
 - Ensure single-column ATS-friendly structure.
 
 ### Step 9 — Write Output & Compile
-- Create a timestamped output directory: `output/YYYY-MM-DD_HH-mm-ss/` (or current local datetime).
-- Inside this directory, generate both formats:
-  - **Markdown version**: `<company>_resume.md` (or `resume.md`)
-  - **LaTeX version**: `<company>_resume.tex` (or `resume.tex`)
-- If LaTeX compiler (`pdflatex`) is available:
+- Naming convention (folder = company slug + timestamp **without seconds**; files = `cv_` + name slug + date):
+  - Directory: `output/<company-slug>_<YYYY-MM-DD_HH-mm>/` — e.g. `output/growmodo_2026-09-23_14-56/`
+  - **Markdown version**: `cv_<name-slug>_<YYYY-MM-DD>.md` — e.g. `cv_athalla-rizky_2026-09-23.md`
+  - **LaTeX version**: `cv_<name-slug>_<YYYY-MM-DD>.tex`
+  - The name slug comes from `name_slug` in `/resources/meta/contact.md` — never derive or invent it.
+- Compile the PDF via the bundled engine-agnostic script (resolves tectonic → pdflatex → xelatex → latexmk; if none exists, run `scripts/setup.sh` once):
   ```bash
-  cd output/<timestamp>/ && pdflatex -interaction=nonstopmode -halt-on-error <filename>.tex
+  scripts/compile.sh output/<company-slug>_<YYYY-MM-DD_HH-mm>/cv_<name-slug>_<YYYY-MM-DD>.tex
   ```
-- Verify page count. If overflow occurs, trim lower-priority bullets and recompile.
+- The script verifies page count and prints the final PDF path. If it warns about >2 pages, trim lower-priority bullets and recompile.
+- Deliver the compiled `.pdf` to the user directly (attach in chat). Never produce PDFs from the `.md` source — the PDF must come from `.tex` to preserve the template layout.
 
 ### Step 10 — Debrief
 Provide the user with:
