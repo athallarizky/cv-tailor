@@ -1,0 +1,42 @@
+% tokyo-job-fair / resume-rirekisho.tex
+% Japanese rirekisho (resume) layout, English content. One page.
+% Tokens are double-bracketed and filled by scripts/generate-tokyo-cv.py. Compile: scripts/compile.sh <file>
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.3cm]{geometry}
+\usepackage{tabularx,array,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+\begin{document}
+
+{\large\textbf{RESUME (Rirekisho Format)}}\hfill As of [[DATE]]
+\vspace{3pt}\hrule\vspace{8pt}
+
+% --- Personal information -------------------------------------------------
+\begin{tabularx}{\textwidth}{|p{3.2cm}|X|}
+\hline
+\textbf{Name} & [[NAME]] \\ \hline
+\textbf{Date of Birth} & [[DOB]] \\ \hline
+\textbf{Present Address} & [[ADDRESS]] \\ \hline
+\textbf{Phone (Mobile)} & [[PHONE]] \\ \hline
+\textbf{Email} & [[EMAIL]] \\ \hline
+\textbf{Web / Portfolio} & [[WEB]] \\ \hline
+\end{tabularx}
+
+\vspace{8pt}
+% --- Education & Work history (single table, Japanese convention) ---------
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1.9cm}|X|}
+\hline
+\multicolumn{2}{|l|}{\textbf{Education}} \\ \hline
+[[EDU_ROWS]] \\ \hline
+\multicolumn{2}{|l|}{\textbf{Work History}} \\ \hline
+[[WORK_ROWS]] \\ \hline
+\end{tabularx}
+
+\vspace{8pt}
+% --- Motivation -------------------------------------------------------------
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{Motivation for Application} \hfill ([[TARGET]])\par\vspace{2pt}
+[[MOTIVATION]]}}
+
+\end{document}

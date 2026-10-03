@@ -107,6 +107,12 @@ Each experience file combines YAML metadata (dates, stack, `featured` priority, 
 | Template | Notes |
 |---|---|
 | `ats-friendly-technical-resume` | Single-column, `glyphtounicode` for machine-readable PDF, 1–2 page discipline — cut bullets, never shrink fonts |
+| `tokyo-job-fair` | Japanese-format pair (English content): rirekisho-style resume (1 page) + shokumu-keirekisho-style CV (career summary, Self-PR, detailed history, skills). Generated from JSON via `scripts/generate-tokyo-cv.py` — see `templates/tokyo-job-fair/content.example.json` |
+
+```bash
+# Generate + compile both tokyo-job-fair documents from a content JSON:
+python3 scripts/generate-tokyo-cv.py templates/tokyo-job-fair/content.example.json --outdir /tmp/example
+```
 
 Page overflow is treated as failure: the skill drops least-relevant bullets first, then trims, then compresses older roles.
 

@@ -1,0 +1,29 @@
+{
+  "name": "Hanako Yamada",
+  "dob": "---- (provided upon request)",
+  "address": "Shinjuku, Tokyo",
+  "phone": "+81 90-0000-0000",
+  "email": "hanako.yamada@example.com",
+  "web": "linkedin.com/in/example / github.com/example",
+  "date_label": "September 28, 2026",
+  "target_label": "Example Target Co.",
+  "motivation": "I am applying for the Senior Frontend Engineer role at Example Target Co. With 5+ years building high-traffic web applications, I want to contribute production-grade frontend architecture to your team while growing through cross-cultural collaboration in Tokyo.",
+  "self_pr": "Frontend engineer with 5+ years shipping React/Next.js products at scale. Strengths: component-system design adopted across teams, performance work under peak traffic, and mentoring. Comfortable working in English across hybrid and remote teams.",
+  "education": [
+    {"date": "2018.04", "text": "Example University --- B.Sc. in Computer Science, Enrolled"},
+    {"date": "2022.03", "text": "Example University --- Graduated (GPA 3.6/4.0)"}
+  ],
+  "entries": [
+    {"start": "Jun 2024", "end": "Present", "org": "Example Corp", "role": "Software Engineer --- Front End", "loc": "Tokyo",
+     "bullets": ["Own front-end delivery of the main product ($XXM+ revenue, millions of users).",
+                 "Modernized legacy modules into a modular Next.js and TypeScript architecture."]},
+    {"start": "Apr 2021", "end": "May 2024", "org": "Example Startup", "role": "Frontend Engineer", "loc": "Osaka",
+     "bullets": ["Built responsive, accessible interfaces across public and internal dashboards.",
+                 "Standardized a reusable component system and unified data layer across web & mobile."]}
+  ],
+  "skills": [
+    "Core: Next.js (SSR, SSG, App Router), React.js, TypeScript, JavaScript (ES6+), HTML5, CSS3",
+    "State & Data: Redux Toolkit, Zustand, TanStack Query, RESTful APIs, GraphQL",
+    "Workflow & Quality: Git-based workflows, Code Review, CI/CD pipelines, i18n"
+  ]
+}

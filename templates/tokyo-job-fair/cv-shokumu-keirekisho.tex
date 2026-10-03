@@ -1,0 +1,44 @@
+% tokyo-job-fair / cv-shokumu-keirekisho.tex
+% Japanese shokumu keirekisho (work-history CV) layout, English content. 1-2 pages.
+% Tokens are double-bracketed and filled by scripts/generate-tokyo-cv.py. Compile: scripts/compile.sh <file>
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.3cm]{geometry}
+\usepackage{tabularx,array,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.2em,nosep}
+\pagestyle{empty}
+\begin{document}
+
+{\large\textbf{WORK HISTORY (Shokumu Keirekisho Format)}}\hfill
+\begin{tabular}{r}
+\textbf{Name:} [[NAME]] \\ As of [[DATE]] \\
+\end{tabular}
+\vspace{3pt}\hrule\vspace{8pt}
+
+\textbf{1. Career Summary}
+\begin{center}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.4cm}|X|}
+\hline
+[[SUMMARY_ROWS]] \\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{4pt}
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{2. Self-PR}\par\vspace{2pt}
+[[SELF_PR]]}}
+
+\vspace{8pt}
+\textbf{3. Detailed Work History}
+
+\vspace{4pt}
+[[WORK_DETAIL]]
+
+\vspace{8pt}
+\textbf{4. Technical Skills}
+
+\vspace{2pt}
+[[SKILLS]]
+
+\end{document}
