@@ -154,6 +154,11 @@ Provide the user with:
 1. Output file location.
 2. Brief recap of tailored highlights.
 3. Recommendations for cover letter or interview discussion regarding any identified gaps.
+4. **Archive to iCloud** — `output/` is gitignored and ephemeral, so publish the finished folder to keep it (and keep it company-identifiable):
+   ```bash
+   scripts/publish-icloud.sh output/<company-slug>_<YYYY-MM-DD_HH-mm>/
+   ```
+   This copies the final artifacts only (`.pdf`, `.tex`, `.md`, `.json` — never aux files) into `~/Library/Mobile Documents/com~apple~CloudDocs/iDocument/Generated-CV/<company-slug>_<YYYY-MM-DD_HH-mm>/`, preserving the company folder as the parent. Report the archived path to the user. Re-publishing after a recompile overwrites in place, so it is always safe to re-run.
 
 ---
 

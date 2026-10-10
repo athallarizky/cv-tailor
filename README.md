@@ -50,6 +50,17 @@ output/growmodo_2026-09-23_14-56/
 └── cv_athalla-rizky_2026-09-23.pdf   ← compiled automatically
 ```
 
+### iCloud Archive
+
+`output/` is gitignored and ephemeral, so every run is published to iCloud as a permanent archive — the skill's debrief step (Step 10) does this automatically, keeping the company folder as the parent so each application stays identifiable:
+
+```bash
+./scripts/publish-icloud.sh output/growmodo_2026-09-23_14-56/
+# → ~/Library/Mobile Documents/com~apple~CloudDocs/iDocument/Generated-CV/growmodo_2026-09-23_14-56/
+```
+
+Only final artifacts (`.pdf`, `.tex`, `.md`, `.json`) are copied — aux files never sync, and re-publishing overwrites in place. Override the iCloud root with the `CV_ICLOUD_DIR` env var.
+
 ### PDF Compilation (one-time setup)
 
 No LaTeX toolchain? Run the bundled installer once — it sets up [Tectonic](https://tectonic-typesetting.github.io) (single static binary, ~30MB, no sudo, macOS/Linux/Windows):
@@ -112,6 +123,8 @@ Each experience file combines YAML metadata (dates, stack, `featured` priority, 
 ```bash
 # Generate + compile both tokyo-job-fair documents from a content JSON:
 python3 scripts/generate-tokyo-cv.py templates/tokyo-job-fair/content.example.json --outdir /tmp/example
+
+# Add --publish to also archive the result folder to iCloud
 ```
 
 Page overflow is treated as failure: the skill drops least-relevant bullets first, then trims, then compresses older roles.

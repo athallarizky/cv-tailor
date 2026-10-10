@@ -3,7 +3,7 @@
 from a content JSON, then compile them with scripts/compile.sh if available.
 
 Usage:
-    scripts/generate-tokyo-cv.py <content.json> [--outdir DIR] [--no-compile]
+    scripts/generate-tokyo-cv.py <content.json> [--outdir DIR] [--no-compile] [--publish]
 
 Content JSON schema (all strings; entries drive both documents):
 {
@@ -102,6 +102,8 @@ def main():
     ap.add_argument("content", help="content JSON path")
     ap.add_argument("--outdir", default=None)
     ap.add_argument("--no-compile", action="store_true")
+    ap.add_argument("--publish", action="store_true",
+                    help="archive the output folder to iCloud via scripts/publish-icloud.sh")
     args = ap.parse_args()
 
     with open(args.content) as f:
@@ -150,6 +152,14 @@ def main():
                 print(r.stdout.strip().splitlines()[-1] if r.stdout.strip() else r.stderr.strip())
         else:
             print("compile.sh not found — skipping PDF compilation")
+
+    if args.publish:
+        publisher = os.path.join(REPO, "scripts", "publish-icloud.sh")
+        if os.path.exists(publisher):
+            r = subprocess.run([publisher, outdir], capture_output=True, text=True)
+            print(r.stdout.strip() or r.stderr.strip())
+        else:
+            print("publish-icloud.sh not found — skipping iCloud archive")
 
 
 if __name__ == "__main__":
